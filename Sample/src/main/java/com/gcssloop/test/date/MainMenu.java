@@ -23,6 +23,7 @@ import com.gcssloop.test.viewsupport.TestApiHelperActivity;
 import com.gcssloop.test.viewsupport.TestCanvasAidUtilsActivity;
 import com.gcssloop.test.viewsupport.TestCustomViewActivity;
 import com.gcssloop.test.viewsupport.TestMorionEventHelperActivity;
+import com.gcssloop.test.viewsupport.TestRemoteControlMenuActivity;
 import com.gcssloop.test.viewsupport.TestRotate3dAnimationActivity;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public class MainMenu {
         menu.add(new MenuEntity("ApiHelper测试", TestApiHelperActivity.class)) ;
         menu.add(new MenuEntity("MotionEventHelper测试", TestMorionEventHelperActivity.class)) ;
         menu.add(new MenuEntity("CanvasAidUtils测试", TestCanvasAidUtilsActivity.class)) ;
+        menu.add(new MenuEntity("RemoteControlMenu(自定义遥控器，不规则 view)事件测试", TestRemoteControlMenuActivity.class)) ;
+
     }
 
     public static class MenuEntity{
