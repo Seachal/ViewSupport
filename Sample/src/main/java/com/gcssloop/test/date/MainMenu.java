@@ -19,10 +19,13 @@
 
 package com.gcssloop.test.date;
 
+import com.gcssloop.test.viewsupport.Bezier3Activity;
+import com.gcssloop.test.viewsupport.SearchViewActivity;
 import com.gcssloop.test.viewsupport.TestApiHelperActivity;
 import com.gcssloop.test.viewsupport.TestCanvasAidUtilsActivity;
 import com.gcssloop.test.viewsupport.TestCustomViewActivity;
 import com.gcssloop.test.viewsupport.TestMorionEventHelperActivity;
+import com.gcssloop.test.viewsupport.TestPathActivity;
 import com.gcssloop.test.viewsupport.TestRemoteControlMenuActivity;
 import com.gcssloop.test.viewsupport.TestRotate3dAnimationActivity;
 
@@ -39,6 +42,12 @@ public class MainMenu {
         menu.add(new MenuEntity("MotionEventHelper测试", TestMorionEventHelperActivity.class)) ;
         menu.add(new MenuEntity("CanvasAidUtils测试", TestCanvasAidUtilsActivity.class)) ;
         menu.add(new MenuEntity("RemoteControlMenu(自定义遥控器，不规则 view)事件测试", TestRemoteControlMenuActivity.class)) ;
+        menu.add(new MenuEntity("Test path", TestPathActivity.class)) ;
+
+
+        menu.add(new MenuEntity("Test 圆变心", Bezier3Activity.class)) ;
+        menu.add(new MenuEntity("搜索", SearchViewActivity.class)) ;
+//        menu.add(new MenuEntity("TSetPolyToPoly", SetPolyToPolyActivity.class)) ;
 
     }
 

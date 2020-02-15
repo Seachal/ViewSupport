@@ -75,6 +75,11 @@
 
         <activity android:name="com.gcssloop.test.viewsupport.TestRemoteControlMenuActivity"></activity>
 
+        <activity android:name="com.gcssloop.test.viewsupport.TestPathActivity" />
+        <activity android:name="com.gcssloop.test.viewsupport.Bezier3Activity" />
+
+        <activity android:name="com.gcssloop.test.viewsupport.SearchViewActivity" />
+        <activity android:name="com.gcssloop.test.viewsupport.SetPolyToPolyActivity" />
     </application>
 
 </manifest>
