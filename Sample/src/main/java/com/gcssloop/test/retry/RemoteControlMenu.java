@@ -21,11 +21,21 @@ import com.gcssloop.view.CustomView;
  * *
  */
 public class RemoteControlMenu extends CustomView {
+//       1.
+//    Region 的区域检测。
+//        2.
+//    Matrix 的坐标映射。
+//
+
+
+    //
     Path up_p, down_p, left_p, right_p, center_p;
-    Region up, down, left, right, center;
+    //  范围
+    Region up_r, down_r, left_r, right_r, center_r;
 
     Matrix mMapMatrix = null;
 
+//   sca: 标记
     int CENTER = 0;
     int UP = 1;
     int RIGHT = 2;
@@ -38,8 +48,6 @@ public class RemoteControlMenu extends CustomView {
 
     int mDefauColor = 0xFF4E5268;
     int mTouchedColor = 0xFFDF9C81;
-
-
     public RemoteControlMenu(Context context) {
         this(context, null);
     }
@@ -52,12 +60,11 @@ public class RemoteControlMenu extends CustomView {
         left_p = new Path();
         right_p = new Path();
         center_p = new Path();
-
-        up = new Region();
-        down = new Region();
-        left = new Region();
-        right = new Region();
-        center = new Region();
+        up_r = new Region();
+        down_r = new Region();
+        left_r = new Region();
+        right_r = new Region();
+        center_r = new Region();
 
         mDeafultPaint.setColor(mDefauColor);
         mDeafultPaint.setAntiAlias(true);
@@ -66,6 +73,13 @@ public class RemoteControlMenu extends CustomView {
 
     }
 
+    /**
+     * sca: measure 后，还是会发生变化，所以需要用 onSizeChanged 再次确定大小。
+     * @param w
+     * @param h
+     * @param oldw
+     * @param oldh
+     */
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -87,27 +101,27 @@ public class RemoteControlMenu extends CustomView {
 
         // 根据视图大小，初始化 Path 和 Region
         center_p.addCircle(0, 0, 0.2f * minWidth, Path.Direction.CW);
-        center.setPath(center_p, globalRegion);
+        center_r.setPath(center_p, globalRegion);
 
         right_p.addArc(bigCircle, -40, bigSweepAngle);
         right_p.arcTo(smallCircle, 40, smallSweepAngle);
         right_p.close();
-        right.setPath(right_p, globalRegion);
+        right_r.setPath(right_p, globalRegion);
 
         down_p.addArc(bigCircle, 50, bigSweepAngle);
         down_p.arcTo(smallCircle, 130, smallSweepAngle);
         down_p.close();
-        down.setPath(down_p, globalRegion);
+        down_r.setPath(down_p, globalRegion);
 
         left_p.addArc(bigCircle, 140, bigSweepAngle);
         left_p.arcTo(smallCircle, 220, smallSweepAngle);
         left_p.close();
-        left.setPath(left_p, globalRegion);
+        left_r.setPath(left_p, globalRegion);
 
         up_p.addArc(bigCircle, 230, bigSweepAngle);
         up_p.arcTo(smallCircle, 310, smallSweepAngle);
         up_p.close();
-        up.setPath(up_p, globalRegion);
+        up_r.setPath(up_p, globalRegion);
 
     }
 
@@ -158,15 +172,15 @@ public class RemoteControlMenu extends CustomView {
 
     // 获取当前触摸点在哪个区域
     int getTouchedPath(int x, int y) {
-        if (center.contains(x, y)) {
+        if (center_r.contains(x, y)) {
             return 0;
-        } else if (up.contains(x, y)) {
+        } else if (up_r.contains(x, y)) {
             return 1;
-        } else if (right.contains(x, y)) {
+        } else if (right_r.contains(x, y)) {
             return 2;
-        } else if (down.contains(x, y)) {
+        } else if (down_r.contains(x, y)) {
             return 3;
-        } else if (left.contains(x, y)) {
+        } else if (left_r.contains(x, y)) {
             return 4;
         }
         return -1;
